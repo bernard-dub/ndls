@@ -38,19 +38,20 @@ class LessonsController < ApplicationController
   
   def stats
     tests = @lesson.tests.for_user(current_user)
+    @history = tests.sort_by(&:created_at).reverse
     @words = Array.new
     answers = tests.map{|t|t.answers}.flatten
     answers.group_by(&:translation_id).each do |translation_id, answers|
       word = {}
+      correct_answers = answers.select{|a|a.correct?}
       translation = Translation.find(translation_id)
       word[:original] = translation.original
       word[:translated] = translation.translated
-      word[:percentage_score] = (answers.select{|a|a.correct?}.size.to_f / answers.size.to_f*100).round(0)
-      word[:absolute_score] = "#{answers.select{|a|a.correct?}.size} / #{answers.size}"
-      word[:errors] = answers.select{|a|!a.correct?}.map(&:content).uniq.join ", "
+      word[:percentage_score] = (.size.to_f / answers.size.to_f*100).round(0)
+      word[:absolute_score] = "#{correct_answers.size} / #{answers.size}"
+      word[:errors] = correct_answers.map(&:content).uniq.join ", "
       @words << word
     end
-    @history = tests.sort_by(&:created_at).reverse
   end
   
   def reset
