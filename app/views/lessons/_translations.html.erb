@@ -3,4 +3,4 @@
 	<%= render lesson.translations %>
 </div>
 
-<%= render "translations/new", lesson: lesson %>
+<%= render "translations/new", lesson: lesson unless current_user == @lesson.user %>

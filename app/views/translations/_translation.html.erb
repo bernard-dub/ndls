@@ -6,7 +6,11 @@
 	<p class="col">
 		<%= translation.translated %>
 	</p>
+	
+	<% unless current_user == @lesson.user %>
     <div class="col">
 		<%= button_to "Supprimer", translation, method: :delete, class:'btn btn-primary btn-lg', form: {style: 'display:inline-block;'} %>
     </div>
+	<% end %>
+
 </div>
