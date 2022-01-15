@@ -47,8 +47,8 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: myapp_test
+  database: ndls_test
   pool: 5
-  username: brenden
+  username: bernard
   password:
   timeout: 5000
