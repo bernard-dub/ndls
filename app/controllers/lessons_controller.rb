@@ -47,7 +47,7 @@ class LessonsController < ApplicationController
       translation = Translation.find(translation_id)
       word[:original] = translation.original
       word[:translated] = translation.translated
-      word[:percentage_score] = (.size.to_f / answers.size.to_f*100).round(0)
+      word[:percentage_score] = (correct_answers.size.to_f / answers.size.to_f*100).round(0)
       word[:absolute_score] = "#{correct_answers.size} / #{answers.size}"
       word[:errors] = correct_answers.map(&:content).uniq.join ", "
       @words << word
