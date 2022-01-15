@@ -1,0 +1,47 @@
+
+		<h1 class="display-1 bd-title strong">ndls</h1>
+		<p class="bd-lead display-4">Développe tes super-pouvoirs</p>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+	
+  <% @lessons.each do |lesson| %>
+  <div class="col">
+    <div class="card h-100 bg-info bg-gradient">
+      <div class="card-body pb-0">
+        <h3 class="card-title display-5"><%= lesson.title %></h3>
+		<h4 class="card-subtitle fs-4 mb-3 my-3">
+			<span class="badge bg-primary"><%= lesson.user.email %></span>
+			<span class="badge bg-primary"><%= "#{pluralize lesson.translations.count, 'mot'}" %></span>
+			<% unless lesson.tests.for_user(current_user).empty? %>
+				<span class="badge bg-<%= set_color(full_score_percentage(lesson,current_user))%>">
+					<%= full_score_percentage(lesson,current_user) %></span>
+			<% end %>
+		</h4>
+      </div>
+      <div class="card-footer bg-transparent border-info">
+		<div class="row px-2">
+			<%= link_to "Commencer le test", play_lesson_path(lesson), class:'col btn btn-warning btn-lg mb-3 width-auto' %>
+		</div>
+		<div class="row px-2">
+			<%= link_to "Stats", stats_lesson_path(lesson), class:'col btn btn-primary btn-lg mb-3' %>
+			<%= link_to "Modifier", lesson, class:'col btn btn-primary btn-lg mb-3 ms-3' if lesson.user == current_user %>
+		</div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  
+  <div class="col">
+    <div class="card h-100 bg-warning bg-gradient">
+      <div class="card-body">
+		<div class="row px-2 mt-auto h-100 d-flex align-items-center">
+		<%= link_to "Ajouter une leçon", new_lesson_path, class:'btn btn-outline-secondary stretched-link btn-lg' %>
+		</div>
+      </div>
+      <!-- <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div> -->
+    </div>
+  </div>
+  
+</div>

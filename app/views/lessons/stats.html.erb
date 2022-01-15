@@ -1,0 +1,46 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @lesson %>
+
+<div>
+  <%= link_to "Commencer le test", play_lesson_path(@lesson), class:'btn btn-warning btn-lg' %>
+  <%= link_to "Remettre à zéro", reset_lesson_path(@lesson), class:'btn btn-primary btn-lg'  %>
+  <%= link_to "Toutes les leçons", lessons_path, class:'btn btn-primary btn-lg' %>
+</div>
+
+<h2 class="display-5 mt-5 border-bottom">Votre score<h2>
+	<p class="display-1"><%= full_score_percentage(@lesson, current_user) %> (<%= full_score_absolute(@lesson, current_user) %>)</p>
+
+<h2 class="display-5 mt-5 border-bottom">Historique</h2>
+	
+<% @history.each do |test| %>
+	<div class="row pt-2 border-bottom">
+		<div class="col-4">
+			<%= format_date test.created_at %>
+		</div>
+		<div class="col"><%= test.percentage_score %>%</div>
+		<div class="col strong">
+			<%= test.score %> / <%= test.maximum_score %>
+		</div>
+		<div class="col-4">
+			<div class="progress my-2">
+			  <div class="progress-bar bg-<%= set_color(test.percentage_score)%>" role="progressbar" style="width: <%= test.percentage_score %>%" aria-valuenow="<%= test.percentage_score%>" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+			
+			
+		</div>
+	</div>	
+<% end %>
+
+
+<h2 class="display-5 mt-5 border-bottom">Mots</h2>
+	
+<% @words.each do |word| %>
+	<div class="row border-bottom">
+		<div class="col-3"><%= word[:original] %></div>
+		<div class="col-3 text-muted"><%= word[:translated] %></div>
+		<div class="col-1"><%= word[:percentage_score] %>%</div>
+		<div class="col-2"><%= word[:absolute_score] %></div>
+		<div class="col-3 text-warning"><%= word[:errors] %></div>
+	</div>
+<% end %>

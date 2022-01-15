@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NDLS</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+	  
+	  
+	  <div class="container fs-4" style="">
+		  <% unless notice.nil? %>
+		  	<p class="alert alert-primary"><%= notice %></p>
+		  <% end %>
+		  <% unless alert.nil? %>
+		  	<p class="alert alert-warning"><%= alert %></p>
+		  <% end %>
+		  
+    	  <%= yield %>
+		  
+		  <% if current_user %>
+		    <div class="my-5">
+				<button type="button" class="btn btn-primary" disabled>
+				  <%= current_user.email %>
+				</button>
+				
+				<%= button_to('Déconnexion',  destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger', form_class:'disconnect'	)%>
+			</div>
+		  <% end %>
+		  
+		  <%= link_to "Connexion", new_user_session_path, class: 'btn btn-primary m-5' if current_user.nil? %>
+		  
+	  </div>
+  </body>
+</html>

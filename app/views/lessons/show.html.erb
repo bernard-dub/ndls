@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @lesson %>
+
+<div>
+  <%= link_to "Commencer le test", play_lesson_path(@lesson), class:'btn btn-warning btn-lg' %>
+  <%= link_to "Stats", stats_lesson_path(@lesson), class:'btn btn-primary btn-lg' %>
+  <%= link_to "Modifier", edit_lesson_path(@lesson), class:'btn btn-primary btn-lg' %>
+  <%= button_to "Supprimer", @lesson, method: :delete, class:'btn btn-danger btn-lg', form: {style: 'display:inline-block;'} %>
+  <%= link_to "Toutes les leçons", lessons_path, class:'btn btn-primary btn-lg' %>
+</div>
+
+<%= render "lessons/translations", lesson: @lesson %>
+
+

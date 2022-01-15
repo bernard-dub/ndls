@@ -1,0 +1,12 @@
+<div id="<%= dom_id translation %>" class="row border-bottom">
+	<p class="col">
+		<%= translation.original %>
+	</p>
+
+	<p class="col">
+		<%= translation.translated %>
+	</p>
+    <div class="col">
+		<%= button_to "Supprimer", translation, method: :delete, class:'btn btn-primary btn-lg', form: {style: 'display:inline-block;'} %>
+    </div>
+</div>

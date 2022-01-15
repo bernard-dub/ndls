@@ -1,0 +1,21 @@
+<h1 class="display-1">Votre score : <%= @test.score %> sur <%= @test.answers.count %></h1>
+
+
+<% @test.answers.each do |answer| %>
+<div class="row">
+	<p class="col fs-3">
+		<%= answer.translation.original %>
+	</p>
+
+	<p class="col bg-<%= answer.correct? ? 'success' : 'warning' %> bg-gradient">
+		<strong>Votre réponse:</strong>
+		<%= answer.content %>
+	</p>
+</div>
+<% end %>
+
+<div>
+	<%= link_to "Refaire le test", play_lesson_path(@lesson), class:'btn btn-warning btn-lg' %>
+	<%= link_to "Stats", stats_lesson_path(@lesson), class:'btn btn-primary btn-lg' %>
+	<%= link_to "Modifier", @lesson, class:'btn btn-primary btn-lg' %> <%= link_to "Retour", lessons_path, class:'btn btn-primary btn-lg' %>
+</div>

@@ -1,0 +1,4 @@
+<h1 id="<%= dom_id lesson %>" class="display-1">
+    <%= lesson.title %>
+</h1>
+<p>Par <%= lesson.user.email %> - <%= pluralize @lesson.translations.count, "mot" %> - Score : <%= full_score_percentage(@lesson, current_user) %> (<%= full_score_absolute(@lesson, current_user) %>)<p>
