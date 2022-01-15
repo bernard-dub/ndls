@@ -44,12 +44,13 @@ class LessonsController < ApplicationController
     answers.group_by(&:translation_id).each do |translation_id, answers|
       word = {}
       correct_answers = answers.select{|a|a.correct?}
+      incorrect_answers = answers.select{|a|!a.correct?}
       translation = Translation.find(translation_id)
       word[:original] = translation.original
       word[:translated] = translation.translated
       word[:percentage_score] = (correct_answers.size.to_f / answers.size.to_f*100).round(0)
       word[:absolute_score] = "#{correct_answers.size} / #{answers.size}"
-      word[:errors] = correct_answers.map(&:content).uniq.join ", "
+      word[:errors] = incorrect_answers.map(&:content).uniq.join ", "
       @words << word
     end
   end
