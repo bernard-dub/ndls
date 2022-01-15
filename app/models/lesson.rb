@@ -20,4 +20,8 @@ class Lesson < ApplicationRecord
       "-"
     end
   end
+  
+  def no_tests_for(user)
+    self.tests.for_user(user).empty?
+  end
 end
