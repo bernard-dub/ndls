@@ -35,7 +35,7 @@
 			</div>
 		  <% end %>
 		  
-		  <%= link_to "Connexion", new_user_session_path, class: 'btn btn-primary m-5' if current_user.nil? %>
+		  <%= link_to "Connexion", new_user_session_path, class: 'btn btn-primary m-5' if current_user.nil? unless (controller_name == 'sessions' or controller_name == 'registrations') %>
 		  
 	  </div>
   </body>

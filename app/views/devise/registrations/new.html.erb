@@ -1,0 +1,33 @@
+<h2>Je crée mon compte</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="col rounded border border-primary my-5 p-3 bg-primary bg-gradient">
+	<div class="row row-cols-md-2 row-cols-lg-1 text-reset">
+  	  <div class="field col">
+    	  <%= f.label :email %><br />
+    	  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  	  </div>
+
+	  <div class="col">
+	  	<div class="field">
+    	  <%= f.label "Mot de passe" %>
+    	  <% if @minimum_password_length %>
+    	  	<em>(<%= @minimum_password_length %> caractères minimum)</em>
+    	  <% end %><br />
+    	  <%= f.password_field :password, autocomplete: "new-password" %>
+  	  	</div>
+
+  	  	<div class="field">
+    		<%= f.label "Confirmation du mot de passe" %><br />
+    		<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  	  	</div>
+	  </div>
+  	  <div class="actions">
+    	  <%= f.submit "Créer le compte", class: "btn btn-lg btn-danger" %>
+		  <%= link_to "Annuler", '/', class: "btn btn-lg btn-secondary"%>
+  	  </div>
+	</div>
+</div>
+<% end %>
