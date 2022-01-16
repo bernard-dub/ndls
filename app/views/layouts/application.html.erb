@@ -27,11 +27,21 @@
 		  
 		  <% if current_user %>
 		    <div class="my-5">
-				<button type="button" class="btn btn-primary" disabled>
+				<button type="button" class="btn btn-primary mb-2" disabled>
 				  <%= current_user.email %>
 				</button>
 				
-				<%= button_to('Déconnexion',  destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger', form_class:'disconnect'	)%>
+				<%= form_with(model: current_user, url: profanity_path(current_user), method: "patch", class:"disconnect") do |form| %>
+				<div class="btn-group mb-2" role="group">
+					<div class="btn btn-primary">Humeur</div>
+					<% ["bisounours","neutre","fais_moi_mal"].each do |level| %>
+						<%= form.radio_button :profanity, level, class:'btn-check' %>
+						<%= form.label :profanity, level, value: level, class:'btn btn-outline-primary' %>
+					<% end %>
+					<%= form.submit "Changer", class:'btn btn-outline-danger' %>
+				</div>
+				<% end %>
+				<%= button_to('Déconnexion',  destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger mb-2', form_class:'disconnect'	)%>
 			</div>
 		  <% end %>
 		  

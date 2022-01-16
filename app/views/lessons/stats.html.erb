@@ -10,6 +10,7 @@
 
 <h2 class="display-5 mt-5 border-bottom">Votre score<h2>
 	<p class="display-1"><%= full_score_percentage(@lesson, current_user) %> (<%= full_score_absolute(@lesson, current_user) %>)</p>
+	<p class="lead"><%= profanity_feedback(full_score_percentage(@lesson, current_user),current_user) %></p>
 
 <h2 class="display-5 mt-5 border-bottom">Historique des tests</h2>
 	

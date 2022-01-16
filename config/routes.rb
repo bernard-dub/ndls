@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   devise_for :users
   
+  patch 'user/:id/profanity', to: 'users#update', as: 'profanity'
+  
   resources :lessons do
     # get 'play', on: :member
     get 'play(/:reverse)', on: :member, to: 'lessons#play', as: 'play'

@@ -1,5 +1,5 @@
-<h1 class="display-1">Votre score : <%= @test.score %> sur <%= @test.answers.count %></h1>
-
+<h1 class="display-1">Ton score : <%= @test.score %> sur <%= @test.answers.count %></h1>
+<p class="lead fs-1"><%= @test.feedback(:fais_moi_mal) %></p>
 
 <% @test.answers.each do |answer| %>
 <div class="row">
