@@ -3,7 +3,7 @@
 <%= render @lesson %>
 
 <div>
-  <%= link_to "Commencer le test", play_lesson_path(@lesson), class:'btn btn-warning btn-lg' %>
+  <%= links_to_test_and_reverse(@lesson) %>
   <%= link_to "Remettre à zéro", reset_lesson_path(@lesson), class:'btn btn-primary btn-lg'  %>
   <%= link_to "Toutes les leçons", lessons_path, class:'btn btn-primary btn-lg' %>
 </div>
@@ -11,12 +11,15 @@
 <h2 class="display-5 mt-5 border-bottom">Votre score<h2>
 	<p class="display-1"><%= full_score_percentage(@lesson, current_user) %> (<%= full_score_absolute(@lesson, current_user) %>)</p>
 
-<h2 class="display-5 mt-5 border-bottom">Historique</h2>
+<h2 class="display-5 mt-5 border-bottom">Historique des tests</h2>
 	
 <% @history.each do |test| %>
 	<div class="row pt-2 border-bottom">
-		<div class="col-4">
+		<div class="col-3">
 			<%= format_date test.created_at %>
+		</div>
+		<div class="col">
+			<%= test.reverse? ? "<-" : "->" %>
 		</div>
 		<div class="col"><%= test.percentage_score %>%</div>
 		<div class="col strong">
@@ -33,14 +36,15 @@
 <% end %>
 
 
-<h2 class="display-5 mt-5 border-bottom">Mots</h2>
+<h2 class="display-5 mt-5 border-bottom">Détail par mot</h2>
 	
 <% @words.each do |word| %>
 	<div class="row border-bottom">
-		<div class="col-3"><%= word[:original] %></div>
-		<div class="col-3 text-muted"><%= word[:translated] %></div>
+		<div class="col-3 text-warning text-decoration-line-through"><%= word[:original_errors] %></div>
+		<div class="col-2 text-end"><%= word[:original] %></div>
 		<div class="col-1"><%= word[:percentage_score] %>%</div>
-		<div class="col-2"><%= word[:absolute_score] %></div>
-		<div class="col-3 text-warning"><%= word[:errors] %></div>
+		<div class="col-1"><%= word[:absolute_score] %></div>
+		<div class="col-2"><%= word[:translated] %></div>
+		<div class="col-3 text-warning text-decoration-line-through text-end"><%= word[:translated_errors] %></div>
 	</div>
 <% end %>

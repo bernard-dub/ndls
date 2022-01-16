@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :lessons do
-    get 'play', on: :member
+    # get 'play', on: :member
+    get 'play(/:reverse)', on: :member, to: 'lessons#play', as: 'play'
     post 'result', on: :member
     get 'stats', on: :member
     get 'reset', on: :member

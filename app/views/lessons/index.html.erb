@@ -19,9 +19,9 @@
 		</h4>
       </div>
       <div class="card-footer bg-transparent border-info">
-		<div class="row px-2">
+		<div class="row px-0 mb-2">
 			<% unless lesson.no_tests_for(current_user) %>
-				<%= link_to "Commencer le test", play_lesson_path(lesson), class:'col btn btn-warning btn-lg mb-3 width-auto' %>
+				<%= links_to_test_and_reverse(lesson) %>
 			<% else %>
 				<%= link_to "Voir les mots", lesson, class:'col btn btn-warning btn-lg mb-3 width-auto' %>
 			<% end %>

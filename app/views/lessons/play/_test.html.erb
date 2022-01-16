@@ -1,11 +1,18 @@
 <%= form_with model: test, url: result_lesson_path(test.lesson) , method: :post, autocomplete: :off do |form| %>
 	
 	<%= form.hidden_field :user, value: current_user %>
+	<%= form.hidden_field :reverse, value: test.reverse %>
 	
 	<%= form.fields_for :answers do |answer_subform| %>
 	<div id="<%= dom_id answer_subform.object %>" class="row border-bottom pt-3">
 		<p class="col">
-			<span class="fs-2"><%= answer_subform.object.translation.original %> : </span>
+			<span class="fs-2">
+				<% unless test.reverse? %>
+					<%= answer_subform.object.translation.original %> 
+				<% else %>
+					<%= answer_subform.object.translation.translated %>
+				<% end %>
+				: </span>
 		</p>
 
 		<p class="col">

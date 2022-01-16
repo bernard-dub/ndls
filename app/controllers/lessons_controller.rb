@@ -15,17 +15,25 @@ class LessonsController < ApplicationController
   
   def play
     @test = Test.new(:lesson => @lesson)
+    @test.reverse = true if params[:reverse] == 'reverse'
     @test.translations = @lesson.translations.shuffle
     render 'lessons/play/index'
   end
   
   def result
-    @test = @lesson.tests.build(score: 0, user_id: current_user.id)
+    @test = @lesson.tests.build(score: 0, user_id: current_user.id, reverse: params['test']['reverse'])
     @test.answers.build params['test']['answers_attributes'].as_json.values
     @test.answers.each do |a|
-      if a.content.parameterize == a.translation.translated.parameterize
-        a.correct = true
-        @test.score += 1
+      unless @test.reverse?
+        if a.content.parameterize == a.translation.translated.parameterize
+          a.correct = true
+          @test.score += 1
+        end
+      else
+        if a.content.parameterize == a.translation.original.parameterize
+          a.correct = true
+          @test.score += 1
+        end
       end
     end
     if @test.save
@@ -50,7 +58,8 @@ class LessonsController < ApplicationController
       word[:translated] = translation.translated
       word[:percentage_score] = (correct_answers.size.to_f / answers.size.to_f*100).round(0)
       word[:absolute_score] = "#{correct_answers.size} / #{answers.size}"
-      word[:errors] = incorrect_answers.map(&:content).uniq.join ", "
+      word[:translated_errors] = incorrect_answers.select{|a|!a.test.reverse?}.map(&:content).uniq.join ", "
+      word[:original_errors] = incorrect_answers.select{|a|a.test.reverse?}.map(&:content).uniq.join ", "
       @words << word
     end
   end
