@@ -23,7 +23,7 @@ class LessonsController < ApplicationController
     @test = @lesson.tests.build(score: 0, user_id: current_user.id)
     @test.answers.build params['test']['answers_attributes'].as_json.values
     @test.answers.each do |a|
-      if a.content == a.translation.translated
+      if a.content.parameterize == a.translation.translated.parameterize
         a.correct = true
         @test.score += 1
       end

@@ -2,12 +2,12 @@
 <div class="row">
   <div class="col-auto">
     <%= form.label :original, style: "display: block" %>
-    <%= form.text_field :original, class: 'form-control' %>
+    <%= form.text_field :original, class: 'form-control', autocomplete: :off, autocapitalize: :off %>
   </div>
 
   <div class="col-auto">
     <%= form.label 'Traduction', style: "display: block" %>
-    <%= form.text_field :translated, class: 'form-control' %>
+    <%= form.text_field :translated, class: 'form-control', autocomplete: :off, autocapitalize: :off %>
   </div>
 
   <div class="col-auto" style="padding-top:2em;">
