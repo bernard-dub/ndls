@@ -17,7 +17,7 @@ class Lesson < ApplicationRecord
     unless self.tests.for_user(user).empty?
       (self.overall_score_for(user).to_f/self.maximum_possible_score_for(user).to_f*100).round(2)
     else
-      "-"
+      ""
     end
   end
   

@@ -1,6 +1,6 @@
 module LessonsHelper
   def full_score_percentage(lesson,user)
-    lesson.percentage_score_for(user).round(0)
+    lesson.percentage_score_for(user).to_f.round(0)
   end
   
   def full_score_absolute(lesson,user)
