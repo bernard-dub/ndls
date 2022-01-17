@@ -62,6 +62,7 @@ class LessonsController < ApplicationController
       word[:original_errors] = incorrect_answers.select{|a|a.test.reverse?}.map(&:content).uniq.join ", "
       @words << word
     end
+    @words.sort_by!{|word| word[:percentage_score]}
   end
   
   def reset
