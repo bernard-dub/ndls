@@ -44,12 +44,15 @@
 <h2 class="display-5 mt-5 border-bottom">Détail par mot</h2>
 	
 <% @words.each do |word| %>
+	<div class="row">
+		<div class="col-4 text-end fs-4"><%= word[:original] %></div>
+		<div class="col-2 text-end"><%= word[:percentage_score] %>%</div>
+		<div class="col-2"><%= word[:absolute_score] %></div>
+		<div class="col-4"><%= word[:translated] %></div>
+	</div>
 	<div class="row border-bottom">
-		<div class="col-3 text-warning text-decoration-line-through"><%= word[:original_errors] %></div>
-		<div class="col-2 text-end"><%= word[:original] %></div>
-		<div class="col-1"><%= word[:percentage_score] %>%</div>
-		<div class="col-1"><%= word[:absolute_score] %></div>
-		<div class="col-2"><%= word[:translated] %></div>
-		<div class="col-3 text-warning text-decoration-line-through text-end"><%= word[:translated_errors] %></div>
+		<div class="col-4 text-warning text-decoration-line-through text-end"><%= word[:original_errors] %></div>
+		<div class="col-4"></div>
+		<div class="col-4 text-warning text-decoration-line-through"><%= word[:translated_errors] %></div>
 	</div>
 <% end %>
