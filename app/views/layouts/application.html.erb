@@ -31,16 +31,18 @@
 				  <%= current_user.email %>
 				</button>
 				
-				<%= form_with(model: current_user, url: profanity_path(current_user), method: "patch", class:"disconnect") do |form| %>
 				<div class="btn-group mb-2" role="group">
 					<div class="btn btn-primary">Humeur</div>
 					<% ["bisounours","neutre","fais_moi_mal"].each do |level| %>
-						<%= form.radio_button :profanity, level, class:'btn-check' %>
-						<%= form.label :profanity, level, value: level, class:'btn btn-outline-primary' %>
+						<% if current_user.profanity== level %>
+							<div class="btn btn-primary"><%= level %></div>
+						<% else %>
+							<%= link_to level, profanity_path(id:current_user.id,profanity:level), class:'btn btn-outline-primary' %>
+						<% end %>
 					<% end %>
-					<%= form.submit "Changer", class:'btn btn-outline-danger' %>
 				</div>
-				<% end %>
+				
+				
 				<%= button_to('Déconnexion',  destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger mb-2', form_class:'disconnect'	)%>
 			</div>
 		  <% end %>
