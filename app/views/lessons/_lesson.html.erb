@@ -3,6 +3,6 @@
 </h1>
 <p>
 	Par <%= lesson.user.email %> - <%= pluralize @lesson.translations.count, "mot" %> |
-	Score : <%= full_score_percentage(@lesson, current_user) %> 
+	Score : <%= full_score_percentage(@lesson, current_user) %>%
 	(<%= full_score_absolute(@lesson, current_user) %>)
 <p>

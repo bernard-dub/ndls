@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @lesson %>
 
 <div>
@@ -20,17 +18,11 @@
 	
 <% @history.each do |test| %>
 	<div class="row pt-2 border-bottom">
-		<div class="col-3">
-			<%= format_date test.created_at %>
-		</div>
-		<div class="col">
-			<%= test.reverse? ? "<-" : "->" %>
-		</div>
-		<div class="col"><%= test.percentage_score %>%</div>
-		<div class="col strong">
-			<%= test.score %> / <%= test.maximum_score %>
-		</div>
-		<div class="col-4">
+		<div class="col-6 col-md-3 fs-3"><%= format_date test.created_at %></div>
+		<div class="col"><span class="badge"><%= test.reverse? ? "<-" : "->" %></span></div>
+		<div class="col fs-2"><%= test.percentage_score %>%</div>
+		<div class="col strong"><%= test.score %> / <%= test.maximum_score %></div>
+		<div class="col-md-4 col-12">
 			<div class="progress my-2">
 			  <div class="progress-bar bg-<%= set_color(test.percentage_score)%>" role="progressbar" style="width: <%= test.percentage_score %>%" aria-valuenow="<%= test.percentage_score%>" aria-valuemin="0" aria-valuemax="100"></div>
 			</div>
@@ -45,14 +37,14 @@
 	
 <% @words.each do |word| %>
 	<div class="row">
-		<div class="col-4 text-end fs-4"><%= word[:original] %></div>
-		<div class="col-2 text-end"><%= word[:percentage_score] %>%</div>
-		<div class="col-2"><%= word[:absolute_score] %></div>
-		<div class="col-4"><%= word[:translated] %></div>
+		<div class="col-6 col-md-4 order-3 order-md-1 text-end fs-2"><%= word[:original] %></div>
+		<div class="col-6 col-md-2 order-1 order-md-2 text-end"><%= word[:percentage_score] %>%</div>
+		<div class="col-6 col-md-2 order-2 order-md-3"><%= word[:absolute_score] %></div>
+		<div class="col-6 col-md-4 order-4 order-md-4 fs-2"><%= word[:translated] %></div>
 	</div>
 	<div class="row border-bottom">
-		<div class="col-4 text-warning text-decoration-line-through text-end"><%= word[:original_errors] %></div>
-		<div class="col-4"></div>
-		<div class="col-4 text-warning text-decoration-line-through"><%= word[:translated_errors] %></div>
+		<div class="col-6 col-md-4 text-warning text-decoration-line-through text-end"><%= word[:original_errors] %></div>
+		<div class="d-none d-md-block col-md-4"></div>
+		<div class="col-6 col-md-4 text-warning text-decoration-line-through"><%= word[:translated_errors] %></div>
 	</div>
 <% end %>

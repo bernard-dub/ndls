@@ -1,9 +1,7 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @lesson %>
 
 <div>
-  <%= link_to "Commencer le test", play_lesson_path(@lesson), class:'btn btn-warning btn-lg' %>
+  <%= links_to_test_and_reverse(@lesson) %>
   <%= link_to "Stats", stats_lesson_path(@lesson), class:'btn btn-primary btn-lg' %>
   
   <% if current_user == @lesson.user %>
