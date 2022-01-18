@@ -5,3 +5,20 @@
  margin:0;
  padding:0;
  }
+ 
+ 
+ /* https://stackoverflow.com/questions/42948820/bootstrap-columns-with-flexbox-are-not-taking-proper-width-on-ios-and-safari */
+ 
+ .flex-row{
+      display: flex;
+     display: -webkit-flex; 
+     flex-wrap:wrap;
+     -webkit-flex-wrap: wrap;
+     -webkit-justify-content: center;
+             justify-content: center;
+ }
+ .flex-row:before, .flex-row:after{
+    display: none;
+ }
+
+ 
