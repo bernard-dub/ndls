@@ -58,8 +58,8 @@ class LessonsController < ApplicationController
       word[:translated] = translation.translated
       word[:percentage_score] = (correct_answers.size.to_f / answers.size.to_f*100).round(0)
       word[:absolute_score] = "#{correct_answers.size} / #{answers.size}"
-      word[:translated_errors] = incorrect_answers.select{|a|!a.test.reverse?}.map(&:content).uniq.join ", "
-      word[:original_errors] = incorrect_answers.select{|a|a.test.reverse?}.map(&:content).uniq.join ", "
+      word[:translated_errors] = incorrect_answers.select{|a|!a.test.reverse?}.map(&:content).uniq.reject(&:blank?).join ", "
+      word[:original_errors] = incorrect_answers.select{|a|a.test.reverse?}.map(&:content).uniq.reject(&:blank?).join ", "
       @words << word
     end
     @words.sort_by!{|word| word[:percentage_score]}
