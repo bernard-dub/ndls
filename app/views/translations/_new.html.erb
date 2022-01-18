@@ -1,17 +1,17 @@
 <%= form_with model: [lesson, Translation.new] do |form| %>
 <div class="row">
-  <div class="col-auto">
-    <%= form.label :original, style: "display: block" %>
-    <%= form.text_field :original, class: 'form-control', autocomplete: :off, autocapitalize: :off %>
+  <div class="col col-6 col-md-4">
+    <%= form.label :original %>
+    <%= form.text_field :original, class: 'form-control fs-4', autocomplete: :off, autocapitalize: :off %>
   </div>
 
-  <div class="col-auto">
-    <%= form.label 'Traduction', style: "display: block" %>
-    <%= form.text_field :translated, class: 'form-control', autocomplete: :off, autocapitalize: :off %>
+  <div class="col col-6 col-md-4">
+    <%= form.label 'Traduction' %>
+    <%= form.text_field :translated, class: 'form-control fs-4', autocomplete: :off, autocapitalize: :off %>
   </div>
 
-  <div class="col-auto" style="padding-top:2em;">
-    <%= form.submit "Ajouter", class:'btn btn-warning btn-lg' %>
+  <div class="col col-12 col-md-4 mt-md-2 text-center">
+    <br/><%= form.submit "Ajouter", class:'btn btn-warning btn-lg fs-4' %>
   </div>
   
 <% end %>

@@ -2,8 +2,8 @@
 
 <div>
   <%= links_to_test_and_reverse(@lesson) %>
-  <%= link_to "Remettre à zéro", reset_lesson_path(@lesson), class:'btn btn-primary btn-lg'  %>
-  <%= link_to "Toutes les leçons", lessons_path, class:'btn btn-primary btn-lg' %>
+  <%= link_to "Remettre à zéro", reset_lesson_path(@lesson), class:'btn btn-primary btn-lg mb-2 mb-md-0 fs-4'  %>
+  <%= link_to "Toutes les leçons", lessons_path, class:'btn btn-primary btn-lg mb-2 mb-md-0 fs-4' %>
 </div>
 
 <h2 class="display-5 mt-5 border-bottom">Ton score<h2>
@@ -38,8 +38,8 @@
 <% @words.each do |word| %>
 	<div class="row flex-row">
 		<div class="col-6 col-md-4 order-3 order-md-1 text-end fs-2"><%= word[:original] %></div>
-		<div class="col-6 col-md-2 order-1 order-md-2 text-end"><%= word[:percentage_score] %>%</div>
-		<div class="col-6 col-md-2 order-2 order-md-3"><%= word[:absolute_score] %></div>
+		<div class="col-6 col-md-2 order-1 order-md-2 mt-md-2 text-end"><%= word[:percentage_score] %>%</div>
+		<div class="col-6 col-md-2 order-2 order-md-3 mt-md-2"><%= word[:absolute_score] %></div>
 		<div class="col-6 col-md-4 order-4 order-md-4 fs-2"><%= word[:translated] %></div>
 	</div>
 	<div class="row flex-row border-bottom">

@@ -2,14 +2,14 @@
 
 <div>
   <%= links_to_test_and_reverse(@lesson) %>
-  <%= link_to "Stats", stats_lesson_path(@lesson), class:'btn btn-primary btn-lg' %>
+  <%= link_to "Stats", stats_lesson_path(@lesson), class:'btn btn-primary btn-lg mb-2 mb-md-0 fs-4' %>
   
   <% if current_user == @lesson.user %>
-  	<%= link_to "Modifier", edit_lesson_path(@lesson), class:'btn btn-primary btn-lg' %>
-  	<%= button_to "Supprimer", @lesson, method: :delete, class:'btn btn-danger btn-lg', form: {style: 'display:inline-block;'} %>
+  	<%= link_to "Modifier", edit_lesson_path(@lesson), class:'btn btn-primary btn-lg mb-2 mb-md-0 fs-4' %>
+  	<%= button_to "Supprimer", @lesson, method: :delete, class:'btn btn-danger btn-lg mb-2 mb-md-0 fs-4', form: {style: 'display:inline-block;'} %>
   <% end %>
   
-  <%= link_to "Toutes les leçons", lessons_path, class:'btn btn-primary btn-lg' %>
+  <%= link_to "Toutes les leçons", lessons_path, class:'btn btn-primary btn-lg mb-2 mb-md-0 fs-4' %>
 </div>
 
 <%= render "lessons/translations", lesson: @lesson %>

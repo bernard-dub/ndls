@@ -1,15 +1,15 @@
-<div id="<%= dom_id translation %>" class="row border-bottom">
-	<p class="col">
+<div id="<%= dom_id translation %>" class="row border-bottom py-2">
+	<p class="col col-6 col-md-4 display-5">
 		<%= translation.original %>
 	</p>
 
-	<p class="col">
+	<p class="col col-6 col-md-4 display-5">
 		<%= translation.translated %>
 	</p>
 	
 	<% if current_user == @lesson.user %>
-    <div class="col">
-		<%= button_to "Supprimer", translation, method: :delete, class:'btn btn-primary btn-lg', form: {style: 'display:inline-block;'} %>
+    <div class="col col-12 col-md-4 mt-md-2 text-center">
+		<%= button_to "Supprimer", translation, method: :delete, class:'btn btn-primary btn-lg fs-4', form: {style: 'display:inline-block;'} %>
     </div>
 	<% end %>
 

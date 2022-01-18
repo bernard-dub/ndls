@@ -2,32 +2,29 @@
 	
 	<%= form.hidden_field :user, value: current_user %>
 	<%= form.hidden_field :reverse, value: test.reverse %>
-	
+	<div class="pt-3 mb-3 border-bottom"></div>
 	<%= form.fields_for :answers do |answer_subform| %>
-	<div id="<%= dom_id answer_subform.object %>" class="row border-bottom pt-3">
-		<p class="col">
-			<span class="fs-2">
+	<div id="<%= dom_id answer_subform.object %>" class="row border-bottom form-group">
+		<p class="col-12 col-md-6 col-form-label-lg text-center">
+			<span class="display-5">
 				<% unless test.reverse? %>
 					<%= answer_subform.object.translation.original %> 
 				<% else %>
 					<%= answer_subform.object.translation.translated %>
 				<% end %>
-				: </span>
+			</span>
 		</p>
 
-		<p class="col">
-			<%= answer_subform.text_field :content, autocomplete: :off, autocapitalize: :off %>
+		<p class="col-12 col-md-6 form-control-lg">
+			<%= answer_subform.text_field :content, autocomplete: :off, autocapitalize: :off , class: 'form-control text-center fs-3' %>
 		</p>
 		<%= answer_subform.hidden_field :translation_id %>
 	</div>
 	<% end %>
-	<div class="row pt-3">
-		<p class="col"></p>
+	<div class="row pt-3 text-center">
 		<p class="col">
-			<%= form.submit "Résultats", class:'btn btn-primary btn-lg'%>
+			<%= form.submit "Résultats", class:'btn btn-primary btn-lg fs-4'%>
 		</p>
 
 	</div>
-	
-	
 <% end %>
