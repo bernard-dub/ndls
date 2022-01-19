@@ -1,5 +1,5 @@
 <h1 class="display-1">Ton score : <%= @test.score %> sur <%= @test.answers.count %></h1>
-<div class="row align-items-center">
+<div class="row align-items-center flex-row">
 	<div class="col-3 col-md-2 col-lg-1"><%= image_tag "profanity/#{current_user.profanity}.png", class:"img-fluid"%></div>
 	<p class="col-9 mt-4 lead fs-2 lead fs-1"><%= profanity_feedback(@test.percentage_score,current_user) %></p>
 </div>

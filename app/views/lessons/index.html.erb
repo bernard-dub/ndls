@@ -1,13 +1,11 @@
 
 		<h1 class="display-1 bd-title strong">ndls</h1>
 		
-		<div class="row align-items-center">
+		<div class="row align-items-center flex-row">
 			<div class="col-3 col-md-2 col-lg-1"><%= image_tag "profanity/#{current_user.profanity}.png", class:"img-fluid"%></div>
 			<p class="col-9 mt-4 bd-lead display-4"><%= profanity_lead(current_user)%></p>
 		</div>
 		
-		
-
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 	
   <% @lessons.each do |lesson| %>

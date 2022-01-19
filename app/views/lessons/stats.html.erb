@@ -9,7 +9,7 @@
 <h2 class="display-5 mt-5 border-bottom">Ton score<h2>
 	<% unless @lesson.tests.empty? %>
 	<p class="display-1 "><%= full_score_percentage(@lesson, current_user) %>% (<%= full_score_absolute(@lesson, current_user) %>)</p>
-	<div class="row align-items-center">
+	<div class="row align-items-center flex-row">
 		<div class="col-3 col-md-2 col-lg-1"><%= image_tag "profanity/#{current_user.profanity}.png", class:"img-fluid"%></div>
 		<p class="col-9 mt-4 lead fs-2"><%= profanity_feedback(full_score_percentage(@lesson, current_user),current_user) %></p>
 	</div>
