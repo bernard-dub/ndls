@@ -9,10 +9,15 @@
 <h2 class="display-5 mt-5 border-bottom">Ton score<h2>
 	<% unless @lesson.tests.empty? %>
 	<p class="display-1 "><%= full_score_percentage(@lesson, current_user) %>% (<%= full_score_absolute(@lesson, current_user) %>)</p>
-	<div class="row align-items-center flex-row">
-		<div class="col-3 col-md-2 col-lg-1"><%= image_tag "profanity/#{current_user.profanity}.png", class:"img-fluid"%></div>
-		<p class="col-9 mt-4 lead fs-2"><%= profanity_feedback(full_score_percentage(@lesson, current_user),current_user) %></p>
+	
+	
+	<div class="row">
+		<div class="col-md-auto row align-items-center flex-row bg-success bg-gradient rounded-pill mx-1 mb-2 ps-0">
+			<div style="width:80px;"><%= image_tag "profanity/#{current_user.profanity}.png", class:"img-fluid rounded-circle"%></div>
+			<p class="col mt-4 bd-lead"><%= profanity_feedback(full_score_percentage(@lesson, current_user),current_user) %></p>
+		</div>
 	</div>
+	
 	<% else %>
 	<p>Tu n'as pas encore passé de test.</p>
 	<% end %>

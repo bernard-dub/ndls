@@ -1,3 +1,12 @@
+$theme-colors: (
+  "primary": #43aa8b,
+  "secondary": #4d908e,
+  "success": #90be6d,
+  "info": #277da1,
+  "warning": #f9c74f,
+  "danger": #f94144
+);
+
 @import 'bootstrap/scss/bootstrap';
 
  .disconnect {
